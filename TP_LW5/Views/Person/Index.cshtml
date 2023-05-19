@@ -1,0 +1,37 @@
+﻿@model List<TP_LW5.Models.Person>
+
+<h2>Список записей</h2>
+
+<p>
+    <a asp-action="Add">Добавить новую запись</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Возраст</th>
+            <th>Стаж</th>
+            <th>Специальность</th>
+            <th>Номер телефона</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => person.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => person.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => person.Age)</td>
+                <td>@Html.DisplayFor(modelItem => person.Experience)</td>
+                <td>@Html.DisplayFor(modelItem => person.Specialization)</td>
+                <td>@Html.DisplayFor(modelItem => person.PhoneNumber)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@Model.IndexOf(person)">Редактировать</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
